@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Türkçe ve Türk Kültürü 5</title>
+  <style>
+    :root{
+      --bg:#fff8f0;
+      --card:#fffef6;
+      --accent:#FFB03B;
+      --accent2:#5CC8FF;
+      --muted:#6b6b6b;
+      --shadow: 0 10px 30px rgba(20,20,40,0.08);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: 'Segoe UI', Roboto, "Helvetica Neue", Arial, sans-serif;
+      background:linear-gradient(180deg,#fefcf7 0%,var(--bg) 100%);
+      color:#222;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:28px;
+    }
+    .wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:380px 1fr;gap:22px;align-items:start}
+    header{grid-column:1/-1;display:flex;align-items:center;gap:16px}
+    .logo{width:84px;height:84px;border-radius:22px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:34px;box-shadow:var(--shadow)}
+    h1{margin:0;font-size:22px}
+    p.lead{margin:4px 0 0;color:var(--muted)}
+
+    .card{background:var(--card);padding:18px;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .left .card{position:sticky;top:28px}
+
+    .meta{display:flex;flex-direction:column;gap:10px}
+    .meta .small{font-size:13px;color:var(--muted)}
+
+    .preview{height:72vh;border-radius:14px;overflow:hidden;border:6px solid rgba(255,176,59,0.12);box-shadow:0 20px 40px rgba(20,20,40,0.08)}
+    .preview iframe{width:100%;height:100%;border:0;display:block}
+
+    .buttons{display:flex;gap:8px;margin-top:12px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;font-weight:600;text-decoration:none;border:0;cursor:pointer}
+    .btn-primary{background:var(--accent);color:#fff}
+    .btn-ghost{background:transparent;border:1px solid rgba(0,0,0,0.06);}
+    .btn-download{background:linear-gradient(90deg,#ffd19b,#ffb03b);color:#4b2b00}
+
+    footer{grid-column:1/-1;margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
+
+    /* playful stickers */
+    .sticker{position:absolute;transform:rotate(-10deg);font-size:18px}
+    .sticker.top{left:12px;top:6px}
+    .sticker.right{right:8px;top:38px}
+
+    @media(max-width:900px){.wrap{grid-template-columns:1fr;}.left{order:2}.preview{height:60vh}.logo{width:64px;height:64px}}
+  </style>
+</head>
+<body>
+  <div class="sticker top">🌟</div>
+  <div class="sticker right">📚</div>
+  <div class="wrap">
+    <header>
+      <div class="logo">TÇ</div>
+      <div>
+        <h1>Türkçe ve Türk Kültürü 5</h1>
+        <p class="lead">— PDF'i gömülü olarak gösterir.</p>
+      </div>
+    </header>
+
+    <aside class="left">
+      <div class="card">
+        <h3 style="margin-top:0">Kitap Hakkında</h3>
+        <p class="small">Bu sayfa, MEB tarafından yayımlanan "Türkçe ve Türk Kültürü 5"</p>
+
+        <div style="margin-top:12px" class="meta">
+          <div><strong>Başlık:</strong> Türkçe ve Türk Kültürü 5</div>
+          <div class="small">Yayınevi: Milli Eğitim Bakanlığı</div>
+          <div class="small">Format: PDF (gömülü)</div>
+        </div>
+
+        <div class="buttons">
+          <a class="btn btn-primary" href="#preview" onclick="document.getElementById('viewer').scrollIntoView({behavior:'smooth'})">📖 Önizlemeye Git</a>
+          <a class="btn btn-download" id="downloadBtn" href="5.SEVİYE_TTKD.pdf" download>⬇️ PDF İndir</a>
+        </div>
+
+        <hr style="margin:14px 0;border:none;border-top:1px solid rgba(0,0,0,0.06)">
+        <p class="small">Eğer gömülü önizleme tarayıcınızda çalışmazsa, PDF'i indirip aynı klasöre koyup <code>book.pdf</code> olarak isimlendirerek yerel olarak da görüntüleyebilirsiniz.</p>
+      </div>
+
+      <div style="height:18px"></div>
+
+      <div class="card">
+        <h4 style="margin:0 0 6px 0">Renkli Etiketler</h4>
+        <p class="small">........................</p>
+      </div>
+    </aside>
+
+    <main>
+      <div class="card" id="preview">
+        <h3 style="margin-top:0">Kitap Önizlemesi</h3>
+        <div class="preview" title="PDF önizlemesi">
+          <!-- Embed the PDF. If browser blocks embedding, the object provides a fallback link. -->
+          <object id="viewerObject" data="5.SEVİYE_TTKD.pdf" type="application/pdf" width="100%" height="100%">
+            <iframe id="viewer" src="https://docs.google.com/gview?embedded=true&url=5.SEVİYE_TTKD.pdf" frameborder="0"></iframe>
+            <div style="padding:20px">Önizleme gömülemiyor. <a href="5.SEVİYE_TTKD.pdf" target="_blank" rel="noopener">PDF'i yeni pencerede aç</a> veya <a id="dlFallback" href="5.SEVİYE_TTKD.pdf" download>indir</a>.</div>
+          </object>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:12px">
+          <div style="font-size:14px;color:var(--muted)">Sayfa önizlemesi: gömülü görüntü / tarayıcı uyumlu.</div>
+          <div>
+            <a class="btn btn-ghost" href="#" onclick="toggleFull()">🔍 Tam Ekran</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+<!-- Copyright -->
+    <div class="copyright">
+      © MEB YÜKSEKÖĞRETİM VE YURT DIŞI EĞİTİM GENEL MÜDÜRLÜĞÜ
+    </div>
+    <div class="notice">
+      İzinsiz kopyalanamaz ve kullanılamaz.
+    </div>
+    </footer>
+  </div>
+
+  <script>
+    function toggleFull(){
+      const obj = document.getElementById('viewerObject');
+      if(!document.fullscreenElement){
+        obj.requestFullscreen?.();
+      } else {
+        document.exitFullscreen?.();
+      }
+    }
+
+    // If browser blocks embedding from remote host, show a clear download link
+    (function(){
+      const obj = document.getElementById('viewerObject');
+      // quick heuristic: if the object has no content height after load, show fallback
+      setTimeout(()=>{
+        try{
+          const rect = obj.getBoundingClientRect();
+          if(rect.width < 50 || rect.height < 50){
+            document.getElementById('dlFallback').style.display='inline';
+          }
+        }catch(e){}
+      },1200);
+    })();
+  </script>
+</body>
+</html>
