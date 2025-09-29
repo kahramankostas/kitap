@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Türkçe ve Türk Kültürü Kitapları</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+    }
+
+    header h1 {
+      color: #2c3e50;
+      font-size: 2rem;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      width: 90%;
+      max-width: 1200px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .card-title {
+      padding: 15px;
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #34495e;
+    }
+
+    footer {
+      margin: 20px;
+      color: #555;
+      font-size: 0.9rem;
+      text-align: center;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Türkçe ve Türk Kültürü Kitapları</h1>
+    <p>1’den 8’e kadar kitapları seçmek için kartlara tıklayın</p>
+  </header>
+
+  <div class="container" id="bookContainer"></div>
+
+  <footer>
+    © MEB YÜKSEKÖĞRETİM VE YURT DIŞI EĞİTİM GENEL MÜDÜRLÜĞÜ<br>
+    İzinsiz kopyalanamaz ve kullanılamaz.
+  </footer>
+
+  <script>
+    const container = document.getElementById("bookContainer");
+    
+    for (let i = 1; i <= 8; i++) {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.onclick = () => {
+        window.open((i < 10 ? "0" + i : i) + "/index.html", "_blank");
+      };
+
+      const img = document.createElement("img");
+      img.src = `icons/${i < 10 ? "0" + i : i}.png`;
+      img.alt = `Kitap ${i}`;
+      img.width = 230;
+      img.height = 325;
+
+      const title = document.createElement("div");
+      title.className = "card-title";
+      title.textContent = `${i}. SEVİYE TTKD KİTABI`;
+
+      card.appendChild(img);
+      card.appendChild(title);
+      container.appendChild(card);
+    }
+  </script>
+</body>
+</html>
