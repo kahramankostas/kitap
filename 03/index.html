@@ -89,10 +89,47 @@
 
       <div style="height:18px"></div>
 
-      <div class="card">
-        <h4 style="margin:0 0 6px 0">Renkli Etiketler</h4>
-        <p class="small">........................</p>
-      </div>
+<div class="card">
+  <h4 style="margin:0 0 12px 0">ETKİNLİKLER</h4>
+  <div class="theme-buttons">
+    <a class="theme-btn" style="--btn-color:#FFB03B" href="T01.pdf" target="_blank">Tema 1</a>
+    <a class="theme-btn" style="--btn-color:#5CC8FF" href="T02.pdf" target="_blank">Tema 2</a>
+    <a class="theme-btn" style="--btn-color:#FF6B6B" href="T03.pdf" target="_blank">Tema 3</a>
+    <a class="theme-btn" style="--btn-color:#6BCB77" href="T04.pdf" target="_blank">Tema 4</a>
+    <a class="theme-btn" style="--btn-color:#FFD93D" href="T05.pdf" target="_blank">Tema 5</a>
+    <a class="theme-btn" style="--btn-color:#845EC2" href="T06.pdf" target="_blank">Tema 6</a>
+    <a class="theme-btn" style="--btn-color:#FF9671" href="T07.pdf" target="_blank">Tema 7</a>
+    <a class="theme-btn" style="--btn-color:#0099A7" href="T08.pdf" target="_blank">Tema 8</a>
+  </div>
+</div>
+
+<style>
+  .theme-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:6px;
+  }
+
+  .theme-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:8px 16px;
+    border-radius:12px;
+    font-weight:600;
+    color:white;
+    text-decoration:none;
+    background:var(--btn-color,#FFB03B);
+    box-shadow:0 6px 12px rgba(0,0,0,0.1);
+    transition:transform 0.2s, box-shadow 0.2s;
+  }
+
+  .theme-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 24px rgba(0,0,0,0.15);
+  }
+</style>
     </aside>
 
     <main>
