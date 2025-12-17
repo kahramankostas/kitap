@@ -20,8 +20,8 @@ $pages = $input['pages'] ?? '';
 $comment = $input['comment'] ?? '';
 $date = date('d.m.Y H:i:s');
 
-// Target file path (parent directory)
-$file = '../yorum.csv';
+// Target file path (current directory)
+$file = 'yorum.csv';
 
 try {
     // Check if file exists to determine if we need to add a header
