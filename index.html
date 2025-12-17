@@ -83,14 +83,6 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     }
 
-    #feedback-options {
-      display: none;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
     .level-btn {
       padding: 10px 20px;
       background: #3498db;
@@ -105,55 +97,6 @@
     .level-btn:hover {
       background: #2980b9;
     }
-
-    #feedback-form {
-      display: none;
-      flex-direction: column;
-      gap: 15px;
-      margin-top: 20px;
-      text-align: left;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      background: #f9f9f9;
-      padding: 20px;
-      border-radius: 10px;
-    }
-
-    #feedback-form label {
-      font-weight: bold;
-      color: #2c3e50;
-    }
-
-    #feedback-form input,
-    #feedback-form textarea {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-
-    #feedback-form textarea {
-      height: 120px;
-      resize: vertical;
-    }
-
-    #save-btn {
-      background: #27ae60;
-      color: white;
-      border: none;
-      padding: 12px;
-      cursor: pointer;
-      border-radius: 5px;
-      font-size: 1rem;
-      align-self: flex-end;
-    }
-
-    #save-btn:hover {
-      background: #219150;
-    }
   </style>
 </head>
 
@@ -166,23 +109,6 @@
   <div id="feedback-section">
     <button id="toggle-feedback" class="level-btn" style="background: #e67e22; font-size: 1.1rem;">Geri Dönüt / Yorum
       Ekle</button>
-
-    <div id="feedback-options">
-      <p style="width: 100%; color: #555;">Lütfen yorum yapmak istediğiniz seviyeyi seçiniz:</p>
-      <!-- Buttons will be added here by JS -->
-    </div>
-
-    <form id="feedback-form">
-      <h3 id="selected-level-title" style="margin-top: 0; color: #2c3e50;"></h3>
-
-      <label for="page-num">Sayfa Numarası (Örn: 10 veya 10,12):</label>
-      <input type="text" id="page-num" placeholder="Sayfa numaralarını giriniz">
-
-      <label for="comment-text">Yorum / Geri Dönüt:</label>
-      <textarea id="comment-text" placeholder="Görüşlerinizi ve düzeltmelerinizi buraya yazabilirsiniz..."></textarea>
-
-      <button type="button" id="save-btn">Kaydet</button>
-    </form>
   </div>
 
   <div class="container" id="bookContainer"></div>
@@ -217,100 +143,10 @@
       container.appendChild(card);
     }
 
-    // Feedback System Logic
+    // Link to external feedback system
     const feedbackBtn = document.getElementById('toggle-feedback');
-    const feedbackOptions = document.getElementById('feedback-options');
-    const feedbackForm = document.getElementById('feedback-form');
-    const selectedLevelTitle = document.getElementById('selected-level-title');
-    const saveBtn = document.getElementById('save-btn');
-    let currentLevel = 0;
-
     feedbackBtn.onclick = () => {
-      // Toggle options visibility
-      if (feedbackOptions.style.display === 'flex') {
-        feedbackOptions.style.display = 'none';
-        feedbackForm.style.display = 'none'; // Also hide form if closing
-      } else {
-        feedbackOptions.style.display = 'flex';
-      }
-    };
-
-    // Create 1-8 Level Buttons
-    for (let i = 1; i <= 8; i++) {
-      const btn = document.createElement('button');
-      btn.className = 'level-btn';
-      btn.textContent = i + '. Seviye';
-      btn.onclick = () => {
-        currentLevel = i;
-        selectedLevelTitle.textContent = `${i}. Seviye için Geri Dönüt`;
-        feedbackForm.style.display = 'flex';
-        // Scroll to form slightly
-        feedbackForm.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      };
-      feedbackOptions.appendChild(btn);
-    }
-
-    saveBtn.onclick = async () => {
-      const pages = document.getElementById('page-num').value.trim();
-      const comment = document.getElementById('comment-text').value.trim();
-
-      if (!pages || !comment) {
-        alert("Lütfen sayfa numarası ve yorum alanlarını boş bırakmayınız.");
-        return;
-      }
-
-      const payload = {
-        level: currentLevel,
-        pages: pages,
-        comment: comment
-      };
-
-      try {
-        saveBtn.textContent = "Kaydediliyor...";
-        saveBtn.disabled = true;
-
-        const response = await fetch('save_comment.php', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(payload)
-        });
-
-        const result = await response.json();
-
-        if (result.success) {
-          alert("Yorumunuz başarıyla sunucuya kaydedildi.");
-          // Reset form
-          document.getElementById('page-num').value = '';
-          document.getElementById('comment-text').value = '';
-          feedbackForm.style.display = 'none';
-          feedbackOptions.style.display = 'none';
-        } else {
-          throw new Error(result.message || 'Bilinmeyen bir hata oluştu');
-        }
-
-      } catch (error) {
-        console.error('Save error:', error);
-        alert("Sunucuya kaydederken hata oluştu: " + error.message + "\n\nPHP dosyası sunucuda çalışmıyor olabilir. Yedek olarak dosya indirme yöntemi deneniyor...");
-
-        // Fallback to client-side download
-        const bom = "\uFEFF";
-        const safeComment = comment.replace(/"/g, '""');
-        const csvContent = `${bom}Seviye,Sayfa,Yorum,Tarih\n${currentLevel},"${pages}","${safeComment}","${new Date().toLocaleString('tr-TR')}"`;
-
-        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-        const link = document.createElement("a");
-        const url = URL.createObjectURL(blob);
-        link.setAttribute("href", url);
-        link.setAttribute("download", "yorum.csv");
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      } finally {
-        saveBtn.textContent = "Kaydet";
-        saveBtn.disabled = false;
-      }
+      window.open("https://ulkemyanimda.eba.gov.tr/moodle/mod/feedback/edit.php?id=2054", "_blank");
     };
   </script>
 </body>
