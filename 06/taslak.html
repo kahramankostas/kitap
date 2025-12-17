@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hazırlanıyor | Türkçe ve Türk Kültürü</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --meb-red: #E30A17;
+            --soft-bg: #f0f4f8;
+            --cheerful-blue: #4FC3F7;
+            --cheerful-yellow: #FFF176;
+            --text-dark: #2c3e50;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--soft-bg);
+            background-image: radial-gradient(var(--cheerful-blue) 1px, transparent 1px), radial-gradient(var(--cheerful-blue) 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .card {
+            background: white;
+            width: 90%;
+            max-width: 600px;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+            border: 4px solid white;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Kurumsal Başlık Alanı */
+        .header {
+            margin-bottom: 30px;
+            border-bottom: 2px dashed #eee;
+            padding-bottom: 20px;
+        }
+
+        .meb-title {
+            color: var(--meb-red);
+            font-weight: 900;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+
+        .directorate-title {
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            opacity: 0.8;
+        }
+
+        /* Neşeli İkon Alanı */
+        .illustration {
+            font-size: 80px;
+            margin: 20px 0;
+            position: relative;
+            display: inline-block;
+        }
+
+        .pencil {
+            display: inline-block;
+            animation: write 1s ease-in-out infinite alternate;
+        }
+
+        /* Ana Mesaj */
+        .main-message {
+            color: var(--text-dark);
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 20px 0;
+            line-height: 1.4;
+        }
+
+        .sub-message {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            margin-top: 10px;
+            display: inline-block;
+            background: var(--cheerful-yellow);
+            padding: 5px 15px;
+            border-radius: 20px;
+            transform: rotate(-2deg);
+            box-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+        }
+
+        /* Yükleniyor Barı */
+        .progress-container {
+            width: 80%;
+            height: 10px;
+            background: #eee;
+            border-radius: 5px;
+            margin: 30px auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 50%;
+            background: repeating-linear-gradient(
+                45deg,
+                var(--meb-red),
+                var(--meb-red) 10px,
+                #ff5252 10px,
+                #ff5252 20px
+            );
+            border-radius: 5px;
+            animation: loading 2s linear infinite;
+        }
+
+        /* Animasyonlar */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes write {
+            0% { transform: rotate(0deg) translateX(0); }
+            100% { transform: rotate(-10deg) translateX(-10px); }
+        }
+
+        @keyframes loading {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(200%); }
+        }
+
+        /* Konfetiler için küçük daireler */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            animation: fall linear forwards;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="header">
+            <h1 class="meb-title">TÜRKİYE CUMHURİYETİ<br>MİLLÎ EĞİTİM BAKANLIĞI</h1>
+            <h2 class="directorate-title">YÜKSEKÖĞRETİM VE YURT DIŞI EĞİTİM GENEL MÜDÜRLÜĞÜ</h2>
+        </div>
+
+        <div class="illustration">
+            <span class="pencil">✏️</span>
+            <span style="font-size: 50px;">📚</span>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+
+        <div class="main-message">
+            Bu tema henüz<br>hazırlanma aşamasındadır.
+        </div>
+
+        <div class="sub-message">
+            Bizi takip etmeye devam edin! 👋
+        </div>
+    </div>
+
+    <script>
+        // Sayfaya biraz daha neşe katmak için basit konfeti efekti
+        function createConfetti() {
+            const colors = ['#E30A17', '#4FC3F7', '#FFF176', '#81C784'];
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            
+            // Rastgele pozisyon ve renk
+            const left = Math.random() * 100;
+            const bg = colors[Math.floor(Math.random() * colors.length)];
+            const size = Math.random() * 10 + 5;
+            const duration = Math.random() * 3 + 2;
+
+            confetti.style.left = left + '%';
+            confetti.style.top = '-10px';
+            confetti.style.backgroundColor = bg;
+            confetti.style.width = size + 'px';
+            confetti.style.height = size + 'px';
+            confetti.style.animationDuration = duration + 's';
+            
+            document.body.appendChild(confetti);
+
+            // Animasyon bitince temizle
+            setTimeout(() => {
+                confetti.remove();
+            }, duration * 1000);
+        }
+
+        // Her 300ms'de bir konfeti oluştur
+        setInterval(createConfetti, 500);
+    </script>
+</body>
+</html>
