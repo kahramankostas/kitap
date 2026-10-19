@@ -45,6 +45,10 @@
     .btn-ghost{background:transparent;border:1px solid rgba(0,0,0,0.06);}
     .btn-download{background:linear-gradient(90deg,#ffd19b,#ffb03b);color:#4b2b00}
 
+    .quality-note{background:#eef8ff;border:1px solid rgba(92,200,255,0.45);border-left:5px solid var(--accent2);border-radius:12px;padding:10px 12px;font-size:13px;line-height:1.5;color:#24445a;margin-top:12px}
+    .quality-note strong:first-child{display:block;margin-bottom:2px}
+    .quality-note a{color:#0b6fa4;font-weight:600}
+    .buttons{flex-wrap:wrap}
     footer{grid-column:1/-1;margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
 
     /* playful stickers */
@@ -75,16 +79,21 @@
         <div style="margin-top:12px" class="meta">
           <div><strong>Başlık:</strong> Türkçe ve Türk Kültürü 1</div>
           <div class="small">Yayınevi: Milli Eğitim Bakanlığı</div>
-          <div class="small">Format: PDF (gömülü)</div>
+          <div class="small">Önizleme: Hafifletilmiş PDF (hızlı yüklenir)</div>
+          <div class="small">İndirme: Yüksek çözünürlüklü PDF</div>
         </div>
 
         <div class="buttons">
           <a class="btn btn-primary" href="#preview" onclick="document.getElementById('preview').scrollIntoView({behavior:'smooth'})">📖 Önizlemeye Git</a>
-          <a class="btn btn-download" id="downloadBtn" href="https://drive.google.com/uc?export=download&id=16HJQG6gom_QwgUHWdNzw9T-hR9UbHj_J" target="_blank" rel="noopener">⬇️ PDF İndir</a>
+          <a class="btn btn-download" id="downloadBtn" href="https://ulkemyanimda.eba.gov.tr/yuksek/01.pdf" target="_blank" rel="noopener" download="kitap-01-yuksek-cozunurluk.pdf" title="Yüksek çözünürlüklü PDF’i indir">⬇️ Yüksek Çözünürlüklü PDF İndir</a>
         </div>
 
         <hr style="margin:14px 0;border:none;border-top:1px solid rgba(0,0,0,0.06)">
-        <p class="small">Önizleme tarayıcınızda açılmazsa, PDF İndir düğmesiyle kitabı indirip cihazınızda açabilirsiniz.</p>
+        <div class="quality-note">
+          <strong>ℹ️ Bilgilendirme</strong>
+          Sayfada gördüğünüz önizleme, hızlı açılması için çözünürlüğü biraz düşürülmüş bir sürümdür. Daha net görüntü ve baskı kalitesi için <strong>“Yüksek Çözünürlüklü PDF İndir”</strong> düğmesiyle kitabın yüksek çözünürlüklü sürümünü indirebilirsiniz.
+        </div>
+        <p class="small">Önizleme tarayıcınızda açılmazsa da aynı düğmeyle kitabı indirip cihazınızda açabilirsiniz.</p>
       </div>
 
 
@@ -100,15 +109,18 @@
     <main>
       <div class="card" id="preview">
         <h3 style="margin-top:0">Kitap Önizlemesi</h3>
+        <div class="quality-note" style="margin-bottom:12px">
+          📄 Bu önizleme hızlı yüklenmesi için düşük çözünürlüklüdür. Kitabın yüksek çözünürlüklü sürümünü <a href="https://ulkemyanimda.eba.gov.tr/yuksek/01.pdf" target="_blank" rel="noopener" download="kitap-01-yuksek-cozunurluk.pdf">buradan indirebilirsiniz</a>.
+        </div>
         <div class="preview" title="PDF önizlemesi">
           <!-- Embed the PDF. If browser blocks embedding, the object provides a fallback link. -->
           <object id="viewerObject" data="kitap.pdf" type="application/pdf" width="100%" height="100%">
-<div style="padding:20px">Önizleme gömülemiyor. <a href="kitap.pdf" target="_blank" rel="noopener">PDF'i yeni pencerede aç</a> veya <a id="dlFallback" href="https://drive.google.com/uc?export=download&id=16HJQG6gom_QwgUHWdNzw9T-hR9UbHj_J" target="_blank" rel="noopener">indir</a>.</div>
+<div style="padding:20px">Önizleme gömülemiyor. <a href="kitap.pdf" target="_blank" rel="noopener">PDF'i yeni pencerede aç</a> veya <a id="dlFallback" href="https://ulkemyanimda.eba.gov.tr/yuksek/01.pdf" target="_blank" rel="noopener" download="kitap-01-yuksek-cozunurluk.pdf">yüksek çözünürlüklü sürümü indirin</a>.</div>
           </object>
         </div>
 
         <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:12px">
-          <div style="font-size:14px;color:var(--muted)">Sayfa önizlemesi: gömülü görüntü / tarayıcı uyumlu.</div>
+          <div style="font-size:14px;color:var(--muted)">Önizleme düşük çözünürlüklüdür · İndirilen dosya yüksek çözünürlüklüdür.</div>
           <div>
             <a class="btn btn-ghost" href="#" onclick="toggleFull()">🔍 Tam Ekran</a>
           </div>
