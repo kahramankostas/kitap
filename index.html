@@ -70,33 +70,6 @@
       text-align: center;
       line-height: 1.5;
     }
-
-    /* Feedback Form Styles */
-    #feedback-section {
-      width: 90%;
-      max-width: 800px;
-      margin: 20px 0;
-      text-align: center;
-      background: white;
-      padding: 20px;
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    }
-
-    .level-btn {
-      padding: 10px 20px;
-      background: #3498db;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background 0.3s;
-    }
-
-    .level-btn:hover {
-      background: #2980b9;
-    }
   </style>
 </head>
 
@@ -105,10 +78,6 @@
     <h1>Türkçe ve Türk Kültürü Kitapları</h1>
     <p>1’den 7’ye kadar kitapları seçmek için kartlara tıklayın</p>
   </header>
-
-  <div id="feedback-section">
-    <button id="toggle-feedback" class="level-btn" style="background: #e67e22; font-size: 1.1rem;">Görüş, Öneri ve Değerlendirme</button>
-  </div>
 
   <div class="container" id="bookContainer"></div>
 
@@ -141,12 +110,6 @@
       card.appendChild(title);
       container.appendChild(card);
     }
-
-    // Link to external feedback system
-    const feedbackBtn = document.getElementById('toggle-feedback');
-    feedbackBtn.onclick = () => {
-      window.open("https://veri.meb.gov.tr/FormaGit.aspx?9584", "_blank");
-    };
   </script>
 </body>
 
