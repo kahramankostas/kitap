@@ -128,7 +128,7 @@
       };
 
       const img = document.createElement("img");
-      img.src = `icons/${i < 10 ? "0" + i : i}.png`;
+      img.src = `icons/${i < 10 ? "0" + i : i}.png` + (location.protocol.startsWith('http') ? '?v=2' : '');
       img.alt = `Kitap ${i}`;
       img.width = 230;
       img.height = 325;
