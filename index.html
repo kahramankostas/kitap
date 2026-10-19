@@ -4,9 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
-  <meta http-equiv="refresh" content="0; url=/">
-  <script>window.location.replace('/');</script>
   <title>Türkçe ve Türk Kültürü Kitapları</title>
   <style>
     body {
@@ -104,11 +101,9 @@
 </head>
 
 <body>
-  <!-- Kitap listesi geçici olarak yayından kaldırıldı. İçerik yeniden kullanım için korunuyor. -->
-  <template id="archived-book-content">
   <header>
     <h1>Türkçe ve Türk Kültürü Kitapları</h1>
-    <p>1’den 8’e kadar kitapları seçmek için kartlara tıklayın</p>
+    <p>1’den 7’ye kadar kitapları seçmek için kartlara tıklayın</p>
   </header>
 
   <div id="feedback-section">
@@ -125,7 +120,7 @@
   <script>
     const container = document.getElementById("bookContainer");
 
-    for (let i = 1; i <= 8; i++) {
+    for (let i = 1; i <= 7; i++) {
       const card = document.createElement("div");
       card.className = "card";
       card.onclick = () => {
@@ -153,7 +148,6 @@
       window.open("https://veri.meb.gov.tr/FormaGit.aspx?9584", "_blank");
     };
   </script>
-  </template>
 </body>
 
 </html>
